@@ -7,23 +7,20 @@ const Courses = () => {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const coursesData = await getCoursesFromFirestore(); // Obtiene los cursos desde Firestore
-      // Convierte la marca de tiempo "create" a formato de fecha
+      const coursesData = await getCoursesFromFirestore();
       const formattedCourses = coursesData.map((course) => ({
         ...course,
         create: course.create.toDate(),
       }));
-      setCourses(formattedCourses); // Actualiza el estado con los cursos obtenidos
+      setCourses(formattedCourses);
     };
 
-    fetchCourses(); // Ejecuta la función para obtener los cursos al montar el componente
-  }, []);
-
+    fetchCourses();
+  }, []);
   const handleSearch = (query) => {
     setSearchQuery(query);
   };
 
-  // Filtra los cursos según la consulta de búsqueda (título o instructor)
   const filteredCourses = courses.filter(
     (course) =>
       course.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -36,7 +33,7 @@ const Courses = () => {
       {/* Barra de búsqueda */}
       <input
         type="text"
-        placeholder="Search courses..."
+        placeholder="Buscar Cursos por el titulo o instructor"
         value={searchQuery}
         onChange={(e) => handleSearch(e.target.value)}
       />
