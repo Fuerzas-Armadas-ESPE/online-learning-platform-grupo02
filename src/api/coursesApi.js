@@ -10,7 +10,7 @@ export const getCoursesFromFirestore = async () => {
   const db = getFirestore(); // Obtiene una instancia de Firestore
 
   try {
-    const querySnapshot = await getDocs(collection(db, 'cursos')); // Obtiene todos los documentos de la colección 'cursos'
+    const querySnapshot = await getDocs(collection(db, 'courses')); // Obtiene todos los documentos de la colección 'cursos'
     const courses = querySnapshot.docs.map(doc => {
       const courseData = { id: doc.id, ...doc.data() };
       console.log('Descripción del curso:', courseData.description); // Registra la descripción del curso en la consola
