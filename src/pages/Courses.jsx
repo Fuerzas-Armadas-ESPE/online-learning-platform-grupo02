@@ -22,20 +22,19 @@ const Courses = () => {
     setFilter(e.target.value);
   };
 
-  // Ordenar los cursos según el valor del filtro
   const sortedCourses = [...courses].sort((a, b) => {
     if (filter === 'newest') {
-      return b.create - a.create; // Para más reciente a más antiguo
+      return b.create - a.create; 
     } else if (filter === 'oldest') {
-      return a.create - b.create; // Para más antiguo a más reciente
+      return a.create - b.create; 
     } else if (filter === 'titleAZ') {
-      return a.title.localeCompare(b.title); // Para título de la A a la Z
+      return a.title.localeCompare(b.title); 
     } else if (filter === 'titleZA') {
-      return b.title.localeCompare(a.title); // Para título de la Z a la A
+      return b.title.localeCompare(a.title);
     } else if (filter === 'instructorAZ') {
-      return a.instructor.localeCompare(b.instructor); // Para instructor de la A a la Z
+      return a.instructor.localeCompare(b.instructor);
     } else if (filter === 'instructorZA') {
-      return b.instructor.localeCompare(a.instructor); // Para instructor de la Z a la A
+      return b.instructor.localeCompare(a.instructor); 
     }
     return 0;
   });
@@ -49,8 +48,8 @@ const Courses = () => {
         <option value="oldest">Más antiguo</option>
         <option value="titleAZ">Título (A-Z)</option>
         <option value="titleZA">Título (Z-A)</option>
-        <option value="instructorAZ">Instructor (A-Z)</option> {/* Opción para filtrar por instructor de la A a la Z */}
-        <option value="instructorZA">Instructor (Z-A)</option> {/* Opción para filtrar por instructor de la Z a la A */}
+        <option value="instructorAZ">Instructor (A-Z)</option>
+        <option value="instructorZA">Instructor (Z-A)</option> 
       </select>
       <ul>
         {sortedCourses.map((course) => (
